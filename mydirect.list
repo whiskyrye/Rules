@@ -1,7 +1,7 @@
 # 直连列表
-
 #局域网地址
 IP-CIDR,10.0.0.0/24,no-resolve
+IP-CIDR,192.168.66.0/24,no-resolve
 # 域名后缀匹配
 DOMAIN-SUFFIX,time.windows.com
 DOMAIN-SUFFIX,lanzov.com
@@ -34,73 +34,9 @@ DOMAIN-SUFFIX,app.mitce.net
 DOMAIN-KEYWORD,xlys
 DOMAIN-SUFFIX,xl01.com.de
 
-
-# 直连补充列表(国内域名不解析时，防止走代理使用)
-
-# MyList
-# 域名后缀匹配
-DOMAIN-SUFFIX,time.windows.com
-DOMAIN-SUFFIX,lanzov.com
-DOMAIN-SUFFIX,hao123.com
-# DOMAIN-SUFFIX,xn--ngstr-lra8j.com
-DOMAIN-SUFFIX,aerianas.top
-DOMAIN-SUFFIX,sssyun.xyz
-DOMAIN-SUFFIX,qeayr.cn
-DOMAIN-SUFFIX,saojc.xyz   
-DOMAIN-SUFFIX,dler.cloud
-DOMAIN-SUFFIX,0tk8a3a1q4t94dler.com 
-DOMAIN-SUFFIX,wxda.net
-DOMAIN-SUFFIX,hkmlqxg.xyz
-DOMAIN-SUFFIX,qingtiantv888.xyz
-DOMAIN-SUFFIX,ynhtbank.com
-
-# 快猫    
-DOMAIN-SUFFIX,quickcht3.club
-DOMAIN-SUFFIX,kuaimao2.club
-# 火烧
-DOMAIN-SUFFIX,onesubv.site
-DOMAIN-SUFFIX,one永遠的神.online
-# 猫耳 
-DOMAIN-SUFFIX,zhunchuanpb.com
-DOMAIN-SUFFIX,sevenka.top
-# BestVPN 
-DOMAIN-SUFFIX,prosubnet02.eu
-DOMAIN-SUFFIX,networklinkpro.net
-# 小牛
-DOMAIN-SUFFIX,4yfu73r3a4kl.com
-DOMAIN-SUFFIX,xiaoniuyun.cc  
-# 硅谷
-DOMAIN-SUFFIX,huawei-cloud.shop
-DOMAIN-SUFFIX,huawei-cloud.vip
-DOMAIN-SUFFIX,gpt-agent.cc 
-# 无界
-DOMAIN-SUFFIX,acwct.cn
-DOMAIN-SUFFIX,472361.xyz
-# 冰云
-DOMAIN-SUFFIX,bingyun.ink   
-DOMAIN-SUFFIX,fafhjkah.xyz
-# 牛逼 
-DOMAIN-SUFFIX,66jc.top
-DOMAIN-SUFFIX,zhunchuanpb.com
-
-# 域名关键字匹配
-DOMAIN-KEYWORD,baidu
-
-# IP段匹配
-IP-CIDR,219.146.1.66/32,no-resolve
-
 # 国内DNS
 DOMAIN-SUFFIX,dns.alidns.com
 DOMAIN-SUFFIX,doh.pub
-IP-CIDR,219.146.1.66/32,no-resolve
-IP-CIDR,219.147.1.66/32,no-resolve
-IP-CIDR,119.29.29.29/32,no-resolve
-IP-CIDR,223.5.5.5/32,no-resolve
-IP-CIDR,223.6.6.6/32,no-resolve
-IP-CIDR,180.76.76.76/32,no-resolve
-IP-CIDR,114.114.114.114/32,no-resolve
-IP-CIDR,114.114.115.115/32,no-resolve
-
 
 # 360
 DOMAIN-SUFFIX,360.com
@@ -111,7 +47,6 @@ DOMAIN-SUFFIX,qhres.com
 DOMAIN-SUFFIX,qhstatic.com
 DOMAIN-SUFFIX,qhupdate.com
 DOMAIN-SUFFIX,so.com
-
 
 # 58
 DOMAIN-SUFFIX,58.com
@@ -406,7 +341,6 @@ DOMAIN-SUFFIX,sandai.net
 DOMAIN-SUFFIX,thundercdn.com
 DOMAIN-SUFFIX,xunlei.com
 
-
 # Public Direct CDN 公共直连
 #DOMAIN-SUFFIX,ajax.aspnetcdn.com
 #DOMAIN-SUFFIX,ajax.cloudflare.com
@@ -417,8 +351,6 @@ DOMAIN-SUFFIX,bootcss.com
 DOMAIN-SUFFIX,jiasule.com
 DOMAIN-SUFFIX,staticfile.org
 DOMAIN-SUFFIX,upaiyun.com
-
-
 
 # AccelerateDirectSites
 DOMAIN-SUFFIX,10010.com
