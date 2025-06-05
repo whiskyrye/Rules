@@ -1,6 +1,4 @@
 # 代理补充列表
-
-
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
 DOMAIN-KEYWORD,mitce
@@ -8,12 +6,6 @@ DOMAIN-KEYWORD,mitce
 # 全域名匹配
 DOMAIN,onedrive.live.com
 DOMAIN,converter-mitce.sakuraikaede.com
-# IP段匹配
-IP-CIDR,142.171.133.131/32,no-resolve
-IP-CIDR,103.115.43.2/32,no-resolve
-IP-CIDR,104.236.69.0/24,no-resolve
-IP-CIDR,95.161.76.0/24,no-resolve
-IP-CIDR,142.251.215.0/24,no-resolve
 
 # 国外DNS
 DOMAIN-SUFFIX,dns.google
@@ -148,12 +140,3 @@ DOMAIN-SUFFIX,bulianglin.com
 DOMAIN-SUFFIX,coincola.com
 DOMAIN-SUFFIX,coincolacdn.com
 DOMAIN-SUFFIX,colaotc.com
-
-IP-CIDR,8.8.8.8/32,no-resolve
-IP-CIDR,8.8.4.4/32,no-resolve
-IP-CIDR,1.1.1.1/32,no-resolve
-IP-CIDR,1.0.0.1/32,no-resolve
-IP-CIDR,185.222.222.222/32,no-resolve
-IP-CIDR,208.67.222.222/32,no-resolve
-IP-CIDR,208.67.220.220/32,no-resolve
-IP-CIDR,142.250.0.0/16,no-resolve
