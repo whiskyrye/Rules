@@ -2,6 +2,27 @@
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
 DOMAIN-KEYWORD,mitce
+# MYOROXY
+DOMAIN-SUFFIX,wiki.movie-pilot.org # Moviepilot的文档
+DOMAIN-SUFFIX,v2rayssr.com # V2RaySSR综合网，禁止大陆IP访问，内有一些教程交流贴
+DOMAIN-SUFFIX,zodgame.xyz # ZodGame论坛，主营i社游戏，国内可访问但较慢
+DOMAIN-SUFFIX,ecchi100.com # 里番在线
+DOMAIN-SUFFIX,www.acgkkk.com # ACGUUU资源站
+DOMAIN-SUFFIX,www.gtloli.eu.org # 哥特动漫王国
+DOMAIN,www.bing.com # 网页搜索AI，不具备对话功能
+DOMAIN,copilot.cloud.microsoft # 微软企业/组织Copilot，个人账号无法使用
+DOMAIN,copilot.microsoft.com # 微软个人账户Copilot，可在Windows任务栏/浏览器侧边栏启动
+
+# Game
+DOMAIN-SUFFIX,thunderstore.io # mod下载站，steam游戏mod下载站
+DOMAIN-SUFFIX,pegasus-frontend.org # 天马G主页
+DOMAIN-SUFFIX,prodkeys.net # NS密钥下载
+DOMAIN-SUFFIX,v3.stardew.info # 星露谷物语在线编辑器
+DOMAIN-SUFFIX,simcitybuildit.com # 模拟城市天际线-ipad版，可以直连但是卡顿，代理提高访问体验
+
+# HomeAssistant
+DOMAIN-SUFFIX,basemaps.cartocdn.com # 地图的CDN，不代理加载缓慢，其原始服务已被GFW包含
+DOMAIN-SUFFIX,home-assistant.io # 社区，论坛等，不代理加载缓慢
 
 # 全域名匹配
 DOMAIN,onedrive.live.com
@@ -57,9 +78,7 @@ DOMAIN-SUFFIX,extrabux.com
 DOMAIN-SUFFIX,wallvpn.com
 DOMAIN-SUFFIX,pig.ws
 DOMAIN-SUFFIX,ldmnq.com
-
 DOMAIN-SUFFIX,lightningxvpn.com
-
 DOMAIN-SUFFIX,stotik.com
 DOMAIN-SUFFIX,streetfighter.com
 DOMAIN-SUFFIX,capcom.com
@@ -69,13 +88,9 @@ DOMAIN-SUFFIX,nodeseek.com
 DOMAIN-SUFFIX,socialchain.app
 DOMAIN-SUFFIX,onesignal.com
 DOMAIN-SUFFIX,coinglass.com
-
 DOMAIN-SUFFIX,fiverr.com
 DOMAIN-SUFFIX,ebay.com
-
-
 DOMAIN-SUFFIX,kjfx.cc
-
 DOMAIN-SUFFIX,hlive.io
 DOMAIN-SUFFIX,ndmdhs.com
 DOMAIN-SUFFIX,anygate.vip
@@ -95,9 +110,7 @@ DOMAIN-SUFFIX,tfboyaac.com
 DOMAIN-SUFFIX,tfboyaab.com
 DOMAIN-SUFFIX,aiyifan.tv
 DOMAIN-SUFFIX,tfboyaaa.com
-
 DOMAIN-SUFFIX,canva.com
-
 DOMAIN-SUFFIX,waytogone.com
 DOMAIN-SUFFIX,timeprecei.com
 DOMAIN-SUFFIX,etcbbb.xyz
@@ -106,7 +119,6 @@ DOMAIN-SUFFIX,tfbgaaa.com
 DOMAIN-SUFFIX,etcbba.xyz
 DOMAIN-SUFFIX,tfboyaae.com
 DOMAIN-SUFFIX,tfboyaad.com
-
 DOMAIN-SUFFIX,polivera.ai
 DOMAIN-SUFFIX,asiassn.com
 DOMAIN-SUFFIX,mmcks.top
@@ -140,3 +152,24 @@ DOMAIN-SUFFIX,bulianglin.com
 DOMAIN-SUFFIX,coincola.com
 DOMAIN-SUFFIX,coincolacdn.com
 DOMAIN-SUFFIX,colaotc.com
+
+#程序源码规则集，一般用于编译或下载程序资源/更新等
+DOMAIN-SUFFIX,artifacts.bitwarden.com # bitwarden安装程序资源下载网址，不代理的话bitwarden安装过程要10+分钟
+DOMAIN-SUFFIX,sub.xeton.dev # clash订阅转换地址
+DOMAIN-SUFFIX,www.python.org # Python源码相关分发
+DOMAIN-SUFFIX,cdn.kernel.org # Linux内核下载地址
+DOMAIN-SUFFIX,sourceware.org # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,ftpmirror.gnu.org # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,mirror.lyrahosting.com # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,ftp.nluug.nl # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,ftp.wayne.edu # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,mirror.cyberbits.eu # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,static.rust-lang.org # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,cache.ruby-lang.org # ruby代码分发
+DOMAIN-SUFFIX,git.codelinaro.org # codelinaro代码分发
+DOMAIN-SUFFIX,mirror.csclub.uwaterloo.ca # 滑铁卢大学代码分发镜像加速
+DOMAIN-SUFFIX,mirror.netcologne.de # 德国科隆电信公司分发服务器
+DOMAIN-SUFFIX,www.busybox.net # busybox源码
+DOMAIN-SUFFIX,repo.jellyfin.org # Jellyfin仓库，亚太地区的CDN，用于下载更新/插件等等
+DOMAIN-SUFFIX,sgp1.mirror.jellyfin.org # Jellyfin仓库，亚太地区的CDN，用于下载更新/插件等等
+DOMAIN-SUFFIX,deb.debian.org # debian仓库
