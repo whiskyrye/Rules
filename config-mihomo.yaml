@@ -133,7 +133,7 @@ proxy-groups:
   - {name: 🤖 ChatGPT, <<: *default}
   - {name: 🎬 YouTube, <<: *default}
   - {name: 🍀 Google, <<: *default}
-  - {name: 👨🏿‍💻 GitHub, <<: *default}
+  - {name: 🪴 GitHub, <<: *default}
   - {name: 🐬 OneDrive, <<: *default}
   - {name: Ⓜ️ Microsoft, <<: *default}
   - {name: 🎵 TikTok, <<: *default}
@@ -165,7 +165,7 @@ rules:
   - RULE-SET,ai_domain,🤖 ChatGPT
   - RULE-SET,youtube_domain,🎬 YouTube
   - RULE-SET,google_domain,🍀 Google
-  - RULE-SET,github_domain,👨🏿‍💻 GitHub
+  - RULE-SET,github_domain,🪴 GitHub
   - RULE-SET,onedrive_domain,🐬 OneDrive
   - RULE-SET,microsoft_domain,Ⓜ️ Microsoft
   - RULE-SET,tiktok_domain,🎵 TikTok
