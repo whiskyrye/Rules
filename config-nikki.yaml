@@ -131,7 +131,7 @@ proxy-groups:
   - {name: 🤖 ChatGPT, <<: *default}
   - {name: 🎬 YouTube, <<: *default}
   - {name: 🍀 Google, <<: *default}
-  - {name: 👨🏿‍💻 GitHub, <<: *default}
+  - {name: 🪴 GitHub, <<: *default}
   - {name: 🐬 OneDrive, <<: *default}
   - {name: Ⓜ️  Microsoft, <<: *default}
   - {name: 🎵 TikTok, <<: *default}
@@ -173,7 +173,7 @@ rules:
   - GEOSITE,apple,🍎 Apple
   - RULE-SET,myproxy,🔗 节点选择  # 自用代理
   - GEOSITE,category-ai-!cn,🤖 ChatGPT
-  - GEOSITE,github,👨🏿‍💻 GitHub
+  - GEOSITE,github,🪴 GitHub
   - GEOSITE,youtube,🎬 YouTube
   - GEOSITE,google,🍀 Google
   - GEOSITE,onedrive,🐬 OneDrive
