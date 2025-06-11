@@ -2,7 +2,7 @@
 # 机场订阅
 proxy-providers:
   Airport1:
-    url: "自己的节点订阅地址"
+    url: "换成自己的节点订阅地址"
     type: http
     interval: 86400
     health-check:
@@ -62,15 +62,15 @@ sniffer:
     QUIC:
       ports: [443, 8443]
   force-domain:
-    - +.v2ex.com
+    - '+.v2ex.com'
   skip-domain:
-    - Mijia Cloud
-    - "dlg.io.mi.com"
-    - "+.push.apple.com"
-    - "+.apple.com"
-    - "*.wechat.com"
-    - "*.qq.com"
-    - "*.wechatapp.com"
+    - 'Mijia Cloud'
+    - 'dlg.io.mi.com'
+    - '+.push.apple.com'
+    - '+.apple.com'
+    - '*.wechat.com'
+    - '*.qq.com'
+    - '*.wechatapp.com'
 
 # 入站  
 tun:
@@ -96,16 +96,19 @@ dns:
   # 黑名单模式表示如果匹配成功则不返回 Fake-IP, 白名单模式时只有匹配成功才返回 Fake-IP
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
-    - "rule-set:directfilter" # 个人收集直连域名，不能直接用GEOSITE引用的零散域名
-    - "geosite:category-ads-all" # 广告域名
-    - "geosite:cn" # 中国域名
-    - "geosite:geolocation-cn" # 中国地区域名
-    - "geosite:private" # 私有地址，包括stun，lan等域名
-    - "geosite:apple" # 苹果域名
-    - "geosite:tailscale" # tailscale域名
-    - "geosite:tracker,category-pt" # PT/BT域名
-    - "geosite:synology" # 群晖域名
-    - "geosite:category-ntp" # NTP域名
+    - rule-set:fakeipfilter # 个人收集直连域名，不能直接用GEOSITE引用的零散域名
+    - geosite:private # 私有地址，包括stun，lan等域名
+    - geosite:tailscale # tailscale域名
+    - geosite:category-ads-all # 广告域名
+    - geosite:connectivity-check # 连通性检查
+    - geosite:category-pt
+    - geosite:category-public-tracker
+    - geosite:steam@cn 
+    - geosite:category-games@cn 
+    - geosite:synology # 群晖域名
+    - geosite:category-ntp # NTP域名
+    - geosite:cn # 中国域名
+    - geosite:geolocation-cn # 中国地区域名
   # namesever尽量用运营商提供的DNS
   nameserver:
     - 223.5.5.5
@@ -159,20 +162,21 @@ proxy-groups:
 # 规则匹配
 rules:
   - RULE-SET,myblock,❌ 拒绝
-  - GEOSITE,category-ads-all,REJECT
+  - GEOSITE,category-ads-all,❌ 拒绝
   - GEOSITE,private,🎯 直连 # 私有地址直连
   - RULE-SET,mydirect,🎯 直连 # 自用直连  
   - GEOSITE,tailscale,🎯 直连 # 必须直连，否则tailscale代理打洞
-  - GEOSITE,tracker,🎯 直连 # 必须直连，否则PT/BT直连代理下载
-  - GEOSITE,category-pt,🎯 直连 # 必须直连，否则PT标记盒子
+#  - GEOSITE,category-pt,🎯 直连 # pt域名
+  - GEOSITE,category-public-tracker,🎯 直连 # BT tracker
   - GEOSITE,microsoft@cn,🎯 直连
   - GEOSITE,apple-cn,🎯 直连
   - GEOSITE,steam@cn,🎯 直连
   - GEOSITE,category-games@cn,🎯 直连
   - GEOSITE,synology,🎯 直连 # 群晖服务，包括QC
+  - GEOSITE,cn,🎯 直连 # 中国域名
+  - RULE-SET,myproxy,🔗 节点选择  # 自用代理
   - GEOSITE,tmdb,♻️ 自动选择 # TMDB服务，影视刮削
   - GEOSITE,apple,🍎 Apple
-  - RULE-SET,myproxy,🔗 节点选择  # 自用代理
   - GEOSITE,category-ai-!cn,🤖 ChatGPT
   - GEOSITE,github,🪴 GitHub
   - GEOSITE,youtube,🎬 YouTube
@@ -190,12 +194,11 @@ rules:
   - GEOSITE,gfw,🔗 节点选择 # GFW兜底
   - GEOSITE,microsoft,Ⓜ️ Microsoft # 微软服务，放于GFW后是因为github等在GFW中需要代理
   - GEOSITE,steam,🎮 Steam # Steam，默认直连，换区时修改此处，放于GFW之后是因创意工坊需始终代理
-  - GEOSITE,cn,🎯 直连 # 中国域名
   - GEOIP,private,🎯 直连,no-resolve # 私有地址直连
+  - GEOIP,cn,🎯 直连,no-resolve # 中国IP
   - GEOIP,google,🍀 Google,no-resolve
   - GEOIP,telegram,📱 Telegram,no-resolve # Telegram服务IP
   - GEOIP,netflix,📽️ Netflix,no-resolve
-  - GEOIP,cn,🎯 直连,no-resolve # 中国IP
   - MATCH,🐟 漏网之鱼
  
 # 规则集
@@ -203,18 +206,12 @@ rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
-  rule-providers-general: &rule-providers-general
-    type: http
-    behavior: classical
-    interval: 86400
-
+  domainf: &domainf {type: http, interval: 86400, behavior: domain, format: text}
 rule-providers:
-  directfilter:
-    <<: *rule-providers-general
-    url: https://github.moeyy.xyz/https://raw.githubusercontent.com/whiskyrye/Rules/main/directfilter.yaml
-    path: ./providers/rule/rule-provider_directfilter.yaml
   # 自定义规则  
   myproxy: {<<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/whiskyrye/Rules/main/myproxy.list"}
   mydirect: {<<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/whiskyrye/Rules/main/mydirect.list"}
   # 禁止联网
   myblock: {<<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/whiskyrye/Rules/main/myblock.list"}
+  # fakeipfilter
+  fakeipfilter: {<<: *domainf, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/whiskyrye/Rules/main/fakeipfilter.list"}
