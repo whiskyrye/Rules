@@ -1,7 +1,7 @@
 payload:
   # 此列表被引用到Fakeip-filter，兼具返回真实IP的功能
 # 域名后缀匹配
-  - +.ranmo.cc
+  - '+.ranmo.cc'
   - DOMAIN-SUFFIX,520222.xyz
   - DOMAIN-SUFFIX,time.windows.com
   - DOMAIN-SUFFIX,lanzov.com
