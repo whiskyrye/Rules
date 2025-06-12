@@ -10,3 +10,9 @@
 ### config-mihomo 用于手机、电脑客户端
 1. 规则使用rule-set，规则较多可删减
 2. lite是精简，自用
+### fakeipfilter
+用于自定义直连域名不走fake-ip
+### mydirect
+自定义直连域名
+### myproxy
+自定义代理域名
