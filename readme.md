@@ -5,6 +5,8 @@
 [rules-dat for mihomo](https://github.com/MetaCubeX/meta-rules-dat)➡[mihomo：meta branch](https://github.com/MetaCubeX/meta-rules-dat/tree/meta)
 
 ### config-nikki 用于软路由
-规则使用geosite、geoip，规则较多可删减
+1. 规则使用geosite、geoip，规则较多可删减
+2. lite是精简，自用
 ### config-mihomo 用于手机、电脑客户端
-规则使用rule-set，规则较多可删减
+1. 规则使用rule-set，规则较多可删减
+2. lite是精简，自用
