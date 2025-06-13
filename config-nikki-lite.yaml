@@ -96,20 +96,19 @@ dns:
   # 黑名单模式表示如果匹配成功则不返回 Fake-IP, 白名单模式时只有匹配成功才返回 Fake-IP
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
-    - rule-set:fakeipfilter # 个人收集直连域名，不能直接用GEOSITE引用的零散域名
+    - geosite:cn # 中国域名
+    - rule-set:fakeipfilter # 个人收集直连域名
     - geosite:private # 私有地址，包括stun，lan等域名
     - geosite:tailscale # tailscale域名
-    - geosite:category-ads-all # 广告域名
     - geosite:connectivity-check # 连通性检查
     - geosite:category-public-tracker
     - geosite:category-games@cn 
     - geosite:synology # 群晖域名
     - geosite:category-ntp # NTP域名
-    - geosite:cn # 中国域名
-    - geosite:geolocation-cn # 中国地区域名
   # namesever尽量用运营商提供的DNS
   nameserver:
     - 223.5.5.5
+    - 119.29.29.29
 
 # GEO文件配置
 geodata-mode: true # GeoIP 使用的文件,可选 true 为.dat/ false 为.mmdb
@@ -176,7 +175,7 @@ rules:
   - GEOSITE,speedtest,⛓️‍💥 Speedtest
   - GEOSITE,geolocation-!cn,🔗 节点选择
   - GEOSITE,gfw,🔗 节点选择 # GFW兜底
-  - GEOSITE,microsoft,Ⓜ️ Microsoft # 微软服务，放于GFW后是因为github等在GFW中需要代理
+  - GEOSITE,microsoft,Ⓜ️ Microsoft # 微软服务
   - GEOIP,private,🎯 直连,no-resolve # 私有地址直连
   - GEOIP,cn,🎯 直连,no-resolve # 中国IP
   - GEOIP,google,🍀 Google,no-resolve
