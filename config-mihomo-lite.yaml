@@ -82,7 +82,7 @@ tun:
   auto-route: true
   auto-redirect: true
   auto-detect-interface: true
-  endpoint-independent-nat: true
+  endpoint-independent-nat: false
 
 # DNS模块
 dns:
