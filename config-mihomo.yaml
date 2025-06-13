@@ -96,10 +96,10 @@ dns:
   # 黑名单模式表示如果匹配成功则不返回 Fake-IP, 白名单模式时只有匹配成功才返回 Fake-IP
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
+    - rule-set:cn_domain
     - rule-set:fakeipfilter
     - rule-set:private_domain
     - rule-set:tailscale_domain
-    - rule-set:ads_domain
     - rule-set:check_domain
     - rule-set:pt_domain
     - rule-set:pubtracker_domain
@@ -107,11 +107,11 @@ dns:
     - rule-set:cngames_domain
     - rule-set:synology_domain
     - rule-set:ntp_domain
-    - rule-set:cn_domain
-    - rule-set:geocn_domain
+
   # namesever尽量用运营商提供的DNS
   nameserver:
     - 223.5.5.5
+    - 119.29.29.29
 
 # GEO文件配置
 geodata-mode: true # GeoIP 使用的文件,可选 true 为.dat/ false 为.mmdb
@@ -238,7 +238,6 @@ rule-providers:
   microsoft_domain: {<<: *domain, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
   steam_domain: {<<: *domain, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs"}
   ntp_domain: {<<: *domain, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ntp.mrs"}
-  geocn_domain: {<<: *domain, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-cn.mrs"}
   pt_domain: {<<: *domain, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-pt.mrs"}
   # 自定义规则  
   myproxy: {<<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/whiskyrye/Rules/main/myproxy.list"}
