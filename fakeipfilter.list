@@ -35,17 +35,10 @@
 +.api.onedrive.com # 微软OneDrive个人版，现已被划分到GFW
 
 # Stun 穿透
-+.stun.isp.net.au
-+.fwa.lifesizecloud.com
-+.stun.freeswitch.org
-+.stun.voip.blackberry.com
-+.stun.nextcloud.com
-+.stun.radiojar.com
-+.stun.sonetel.com
-+.stun.syncthing.net
-+.stun.hot-chilli.net
-+.stun.fitauto.ru
-+.stun.miwifi.com
++.stun.*.*
++.stun.*.*.*
++.stun.*.*.*.*
++.stun.*.*.*.*.*
 
 # github代理加速
 +.ghproxy.net
