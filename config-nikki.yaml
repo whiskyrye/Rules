@@ -98,7 +98,7 @@ dns:
   fake-ip-filter:
     - geosite:cn # 中国域名
     - rule-set:fakeipfilter # 个人收集直连域名
-    - geosite:private # 私有地址，包括stun，lan等域名
+    - geosite:private # 私有地址
     - geosite:tailscale # tailscale域名
     - geosite:category-ads-all # 广告域名
     - geosite:connectivity-check # 连通性检查
