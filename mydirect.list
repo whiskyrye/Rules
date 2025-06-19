@@ -39,6 +39,13 @@ DOMAIN-SUFFIX,xboxlive.com # Xbox相关域名
 DOMAIN-SUFFIX,rewards.bing.com # 微软bing积分兑换，绑定地区，开代理兑换容易黑号
 DOMAIN-SUFFIX,api.onedrive.com # 微软OneDrive个人版，现已被划分到GFW
 
+#内网穿透
+DOMAIN-SUFFIX,log.tailscale.io
+DOMAIN-SUFFIX,controlplane.tailscale.com
+DOMAIN-SUFFIX,my.zerotier.com
+DOMAIN-SUFFIX,control.zerotier.com
+DOMAIN-SUFFIX,stun.global.zerotier.com
+
 # Stun
 DOMAIN-SUFFIX,stun.isp.net.au
 DOMAIN-SUFFIX,fwa.lifesizecloud.com
