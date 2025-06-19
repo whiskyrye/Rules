@@ -39,6 +39,7 @@
 +.stun.*.*.*
 +.stun.*.*.*.*
 +.stun.*.*.*.*.*
++.zerotier.com
 
 # github代理加速
 +.ghproxy.net
