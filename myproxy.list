@@ -13,6 +13,9 @@ DOMAIN,www.bing.com # 网页搜索AI，不具备对话功能
 DOMAIN,copilot.cloud.microsoft # 微软企业/组织Copilot，个人账号无法使用
 DOMAIN,copilot.microsoft.com # 微软个人账户Copilot，可在Windows任务栏/浏览器侧边栏启动
 DOMAIN,365.loc.cc
+DOMAIN-SUFFIX,linux.do
+DOMAIN-SUFFIX,nodeloc.com
+DOMAIN-SUFFIX,nodeseek.com
 
 # 国外DNS
 # DOMAIN-SUFFIX,dns.google
@@ -76,7 +79,6 @@ DOMAIN-SUFFIX,streetfighter.com
 DOMAIN-SUFFIX,capcom.com
 DOMAIN-SUFFIX,fcdn.sk
 DOMAIN-SUFFIX,kooink.com
-DOMAIN-SUFFIX,nodeseek.com
 DOMAIN-SUFFIX,socialchain.app
 DOMAIN-SUFFIX,onesignal.com
 DOMAIN-SUFFIX,coinglass.com
