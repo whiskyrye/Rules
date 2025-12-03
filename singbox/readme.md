@@ -8,7 +8,7 @@
 
 # fork分支内核下载（电报频道内下载）：
 [https://t.me/sing_box_reF1nd](https://t.me/sing_box_reF1nd)
-下载后替换openwrt中singbox内核,支持订阅及订阅更新
+下载后替换openwrt中singbox内核（/usr/bin/）,支持订阅及订阅更新
 
 # Thanks
 momo插件仓库：[https://github.com/nikkinikki-org/OpenWrt-momo](https://github.com/nikkinikki-org/OpenWrt-momo)
