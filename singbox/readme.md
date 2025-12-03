@@ -3,7 +3,7 @@
 - zijian-momofake.json为自建节点，入站匹配momo、fakeip模式
 - momo.json为入站匹配momo及专用后端
 - momofake.json为入站匹配momo及专用后端、fakeip模式
-- sub-momofake.json为适配sub-store、入站匹配momo、fakeip模式
+- sub-momofake.json为适配sub-store订阅、入站匹配momo、fakeip模式
 - fork-momofake.json为适配fork内核、入站匹配momo、fakeip模式
 
 # fork分支内核下载（电报频道内下载）：
