@@ -14,6 +14,8 @@
 # Thanks
 momo插件仓库：[https://github.com/nikkinikki-org/OpenWrt-momo](https://github.com/nikkinikki-org/OpenWrt-momo)
 
-singbox内核仓库：[https://github.com/SagerNet/sing-box](https://github.com/SagerNet/sing-box)
+singbox内核仓库：[https://github.com/SagerNet/sing-box](https://github.com/SagerNet/sing-box)    [官方配置实例](https://sing-box.sagernet.org/manual/proxy/client/#virtual-interface)
 
-配置文件：[https://github.com/qichiyuhub/rule/tree/main/config/singbox](https://github.com/qichiyuhub/rule/tree/main/config/singbox)
+QCY配置文件：[https://github.com/qichiyuhub/rule/tree/main/config/singbox](https://github.com/qichiyuhub/rule/tree/main/config/singbox)
+
+sing-box 基础教程:[https://icloudnative.io/posts/sing-box-tutorial/](https://icloudnative.io/posts/sing-box-tutorial/#%E5%85%A5%E7%AB%99%E9%85%8D%E7%BD%AE)
