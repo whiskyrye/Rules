@@ -20,4 +20,4 @@ QCY配置文件：[https://github.com/qichiyuhub/rule/tree/main/config/singbox](
 
 sing-box 基础教程:[https://icloudnative.io/posts/sing-box-tutorial/](https://icloudnative.io/posts/sing-box-tutorial/#%E5%85%A5%E7%AB%99%E9%85%8D%E7%BD%AE)
 
-sing-box配置生成：[sing-box-subscribe-doraemon.vercel.app](sing-box-subscribe-doraemon.vercel.app)   [github源码](https://github.com/Toperlock/sing-box-subscribe)
+sing-box配置生成：[sing-box-subscribe-doraemon.vercel.app](https://sing-box-subscribe-doraemon.vercel.app/)  | [github源码](https://github.com/Toperlock/sing-box-subscribe)
