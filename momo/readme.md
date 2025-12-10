@@ -11,6 +11,11 @@
 
 下载后替换openwrt中singbox内核（/usr/bin/,注意清理缓存/etc/momo/run/cache.db）,支持订阅及订阅更新
 
+# 客户端
+- Windows：GUI.For.SingBox GitHub：[https://github.com/GUI-for-Cores/GUI.for.SingBox](https://github.com/GUI-for-Cores/GUI.for.SingBox)
+- Android：sing-box for Android  GitHub：[https://github.com/SagerNet/sing-box](https://github.com/SagerNet/sing-box)
+- Apple platforms：[详情](https://sing-box.sagernet.org/clients/apple/)
+
 # Thanks
 momo插件仓库：[https://github.com/nikkinikki-org/OpenWrt-momo](https://github.com/nikkinikki-org/OpenWrt-momo)
 
