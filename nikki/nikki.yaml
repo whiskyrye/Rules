@@ -132,7 +132,7 @@ dns:
   enable: true
   listen: 0.0.0.0:1053
   prefer-h3: true
-  ipv6: true
+  ipv6: false
   respect-rules: true     # dns 连接遵守路由规则,需配置 proxy-server-nameserver
   # 模式切换 redir-host / fake-ip
   enhanced-mode: redir-host
