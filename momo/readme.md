@@ -27,6 +27,10 @@ docker run -d \
 - Android：sing-box for Android  GitHub：[https://github.com/SagerNet/sing-box](https://github.com/SagerNet/sing-box)
 - Apple platforms：[详情](https://sing-box.sagernet.org/clients/apple/)
 
+# sing-box规则集
+- MetaCubeX 维护的规则集：https://github.com/MetaCubeX/meta-rules-dat/tree/sing/
+- SingBox 官方维护的规则集：https://github.com/SagerNet/sing-geosite/tree/rule-set
+
 # Thanks
 momo插件仓库：[https://github.com/nikkinikki-org/OpenWrt-momo](https://github.com/nikkinikki-org/OpenWrt-momo)
 
