@@ -10,7 +10,7 @@
 
 # sing-box订阅后端搭建与使用
 订阅后端仓库地址：[https://github.com/Toperlock/sing-box-subscribe](https://github.com/Toperlock/sing-box-subscribe)
-docker搭建命令：Docker-容器-新增-命令行-粘贴以下命令-提交
+- docker搭建命令：Docker-容器-新增-命令行-粘贴以下命令-提交
 ```
 docker run -d \
   --name sing-box \
