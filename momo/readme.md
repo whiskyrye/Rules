@@ -5,15 +5,22 @@
 # singbox配置文件，版本1.12.x
 - momo.json 适配momo，非fakeip，支持订阅
 - momo_fakeip.json 适配momo，fakeip，支持订阅
-- config.json为裸核版本及专用后端
+- config.json为裸核版本，配合singbox订阅后端使用
 - template-momo为reF1nd分支内核提供的momo配置模版文件
 
-- zijian-momofake.json为自建节点，入站匹配momo、fakeip模式
-- momo.json为入站匹配momo及专用后端
-- momofake.json为入站匹配momo及专用后端、fakeip模式
-- sub-momofake.json为适配sub-store订阅、入站匹配momo、fakeip模式
-- fork-momofake.json为适配fork内核、入站匹配momo、fakeip模式
+# singbox订阅后端搭建与使用
+订阅后端仓库地址：[https://github.com/Toperlock/sing-box-subscribe](https://github.com/Toperlock/sing-box-subscribe)
+docker搭建命令：Docker-容器-新增-命令行-粘贴以下命令-提交
+```
+docker run -d \
+  --name sing-box \
+  -p 5000:5000 \
+  --restart always \
+  dockerhub16/sing-box-subscribe:latest
+```
+订阅地址组合：http://192.168.2.1:5000/config/机场订阅&file=配置文件地址
 
+- 机场订阅为clash或者通用订阅即可，多个机场用 | 符合分割，最多可放3个，配置文件使用config.json，配置文件地址。
 
 # 客户端
 - Windows：GUI.For.SingBox GitHub：[https://github.com/GUI-for-Cores/GUI.for.SingBox](https://github.com/GUI-for-Cores/GUI.for.SingBox)
