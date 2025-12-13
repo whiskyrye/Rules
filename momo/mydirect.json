@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "ryee.eu.org",
+        "ranmo.cc",
+        "time.windows.com",
+        "lanzov.com",
+        "weixin.qq.com",
+        "qyapi.weixin.qq.com",
+        "ipinfo.io",
+        "myip.ipip.net",
+        "ipv4.ddnspod.com",
+        "4.ipw.cn",
+        "ip.3322.net",
+        "log.tailscale.io",
+        "controlplane.tailscale.com",
+        "my.zerotier.com",
+        "control.zerotier.com",
+        "stun.global.zerotier.com"
+      ]
+    }
+  ]
+}
