@@ -1,5 +1,5 @@
-## nikki、momo插件配置文件
-# 自编译的ImmortalWrt下载（包含momo、nikki插件）：https://github.com/whiskyrye/ImmortalWrt-Actions/releases
+# nikki、momo插件配置文件
+## 自编译的ImmortalWrt下载（包含momo、nikki插件）：https://github.com/whiskyrye/ImmortalWrt-Actions/releases
 - fakeipfilter：用于自定义直连域名不走fake-ip
 - mydirect：自定义直连域名
 - myproxy：自定义代理域名
