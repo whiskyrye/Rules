@@ -2,7 +2,7 @@
   "providers": [
     {
       "type": "remote",
-      "tag": "RYENODES",
+      "tag": "NODES",
       "health_check": {
           "enabled": false,
           "url": "https://www.gstatic.com/generate_204",
