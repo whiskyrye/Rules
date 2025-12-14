@@ -1,0 +1,39 @@
+# 代理补充列表
+# 代理域名
+DOMAIN-SUFFIX,wiki.movie-pilot.org # Moviepilot的文档
+DOMAIN-SUFFIX,v2rayssr.com # V2RaySSR综合网，禁止大陆IP访问，内有一些教程交流贴
+DOMAIN,copilot.cloud.microsoft # 微软企业/组织Copilot，个人账号无法使用
+DOMAIN,copilot.microsoft.com # 微软个人账户Copilot，可在Windows任务栏/浏览器侧边栏启动
+DOMAIN,365.loc.cc
+DOMAIN-SUFFIX,linux.do
+DOMAIN-SUFFIX,nodeloc.com
+DOMAIN-SUFFIX,nodeseek.com
+
+# 国外DNS
+# DOMAIN-SUFFIX,dns.google
+# DOMAIN-SUFFIX,cloudflare-dns.com
+
+# HomeAssistant
+DOMAIN-SUFFIX,basemaps.cartocdn.com # 地图的CDN，不代理加载缓慢，其原始服务已被GFW包含
+DOMAIN-SUFFIX,home-assistant.io # 社区，论坛等，不代理加载缓慢
+
+#程序源码规则集，一般用于编译或下载程序资源/更新等
+DOMAIN-SUFFIX,artifacts.bitwarden.com # bitwarden安装程序资源下载网址，不代理的话bitwarden安装过程要10+分钟
+DOMAIN-SUFFIX,sub.xeton.dev # clash订阅转换地址
+DOMAIN-SUFFIX,www.python.org # Python源码相关分发
+DOMAIN-SUFFIX,cdn.kernel.org # Linux内核下载地址
+DOMAIN-SUFFIX,sourceware.org # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,ftpmirror.gnu.org # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,mirror.lyrahosting.com # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,ftp.nluug.nl # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,ftp.wayne.edu # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,mirror.cyberbits.eu # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,static.rust-lang.org # 代码托管服务器，包括大部分GNU工具链，编译openwrt会用到
+DOMAIN-SUFFIX,cache.ruby-lang.org # ruby代码分发
+DOMAIN-SUFFIX,git.codelinaro.org # codelinaro代码分发
+DOMAIN-SUFFIX,mirror.csclub.uwaterloo.ca # 滑铁卢大学代码分发镜像加速
+DOMAIN-SUFFIX,mirror.netcologne.de # 德国科隆电信公司分发服务器
+DOMAIN-SUFFIX,www.busybox.net # busybox源码
+DOMAIN-SUFFIX,repo.jellyfin.org # Jellyfin仓库，亚太地区的CDN，用于下载更新/插件等等
+DOMAIN-SUFFIX,sgp1.mirror.jellyfin.org # Jellyfin仓库，亚太地区的CDN，用于下载更新/插件等等
+DOMAIN-SUFFIX,deb.debian.org # debian仓库
