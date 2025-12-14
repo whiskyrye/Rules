@@ -1,0 +1,242 @@
+# 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
+# 机场订阅
+proxy-providers:
+  Airport1:
+    url: "替换成自己的节点订阅链接"
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 🎯 直连
+
+# 节点信息
+proxies:
+  - {name: 🎯 直连, type: direct,udp: true}
+  - {name: ❌ 拒绝, type: reject}
+
+# 全局配置 
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7894
+ipv6: false
+allow-lan: true
+mode: rule
+log-level: warning
+unified-delay: true
+tcp-concurrent: true
+bind-address: '*'
+# 匹配进程 always/strict/off
+#  - always, 开启，强制匹配所有进程
+#  - strict, 默认，由 mihomo 判断是否开启
+#  - off, 不匹配进程，推荐在路由器上使用此模式
+find-process-mode: off
+global-client-fingerprint: chrome
+keep-alive-idle: 600
+keep-alive-interval: 30
+# 推荐在给移动设备代理时启用，可以解决待机异常耗电的问题
+disable-keep-alive: false
+
+# 策略组选择和fakeip缓存
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# 控制面板
+external-controller: 0.0.0.0:9090
+secret: ""
+external-ui: "/etc/mihomo/run/ui"
+external-ui-name: zashboard
+external-ui-url: "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
+
+# 流量嗅探
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - '+.v2ex.com'
+  skip-domain:
+    - '+.local'
+    - '+.lan'
+    - '+.localdomain'
+    - '+.home.arpa'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.push.apple.com'
+    - '+.apple.com'
+    - '+.icloud.com'
+    - '+.qq.com'
+    - '+.weixin.qq.com'
+    - '+.alicdn.com'
+    - '+.bdstatic.com'
+    - '+.bilibili.com'
+    - '+.taobao.com'
+    - '+.jd.com'
+    - 'Mijia Cloud'
+    - 'dlg.io.mi.com'
+    - '+.miwifi.com'
+    - '+.xiaomi.com'
+    - '+.mihome.com'
+    - '+.yeelight.com'
+    - '+.yeelink.net'
+    - '*.wechat.com'
+    - '*.wechatapp.com'
+  skip-src-address:
+    - 192.168.1.1/24
+    - 192.168.66.1/24
+    - 10.0.0.1/24
+    - 10.0.1.1/24
+  skip-dst-address:
+    - 91.105.192.0/23
+    - 91.108.4.0/22
+    - 91.108.8.0/21
+    - 91.108.16.0/21
+    - 91.108.56.0/22
+    - 95.161.64.0/20
+    - 149.154.160.0/20
+    - 185.76.151.0/24
+    - 2001:67c:4e8::/48
+    - 2001:b28:f23c::/47
+    - 2001:b28:f23f::/48
+    - 2a0a:f280:203::/48
+
+# 入站  
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+  strict-route: true # 避免冗余路由污染系统表
+  mtu: 1500 # 减少 MTU 问题，如网页无法打开、测速慢
+  gso: true # 启用通用分段卸载（提升性能）
+  gso-max-size: 65536
+  udp-timeout: 300 # UDP 会话保持时间
+
+# DNS模块
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  prefer-h3: true
+  ipv6: false
+  respect-rules: false     # dns 连接遵守路由规则,需配置 proxy-server-nameserver
+  # 模式切换 redir-host / fake-ip
+  enhanced-mode: fake-ip
+  cache-algorithm: arc    # 使用性能更优的ARC缓存算法
+  cache-size: 2048        # 限制缓存大小
+  use-hosts: false        # 使用hosts
+  use-system-hosts: false # 使用系统hosts
+  fake-ip-range: 198.18.0.1/16
+  # 模式切换 whitelist/blacklist 
+  # 黑名单模式表示如果匹配成功则不返回 Fake-IP, 白名单模式时只有匹配成功才返回 Fake-IP
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - rule-set:fakeipfilter # 个人收集直连域名
+    - geosite:cn # 国内地址
+    - geosite:private # 私有地址
+    - geosite:tailscale # tailscale域名
+    - geosite:connectivity-check # 连通性检查
+    - geosite:category-public-tracker
+  nameserver:
+    - tls://223.5.5.5
+    - tls://223.6.6.6
+
+# GEO文件配置
+geodata-mode: true # GeoIP 使用的文件,可选 true 为.dat/ false 为.mmdb
+geodata-loader: standard # GEO 文件加载模式：standard：标准加载器；memconservative：专为内存受限(小内存)设备优化的加载器(默认值)
+geo-auto-update: true # 自动更新 GEO 文件,可选 true/false
+geo-update-interval: 24 # 更新间隔,单位：小时
+geox-url: # 自定义 GEO 文件下载地址
+  geoip: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+  asn: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+#  geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+#  geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+#  mmdb: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.metadb"
+#  asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
+
+# 出站策略
+# 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
+default: &default {type: select, proxies: [ 🔗 节点选择, 🔜 故转, ♻️ 自动选择, 🇰🇷 韩国自动, 🇯🇵 日本自动, 🇺🇸 美国自动, 🇸🇬 新加坡自动, 🎯 直连, ❌ 拒绝]}
+proxy-groups:
+  - {name: 🔗 节点选择, type: select,proxies: [🔜 故转,♻️ 自动选择, 🇰🇷 韩国自动, 🇯🇵 日本自动, 🇺🇸 美国自动,🇸🇬 新加坡自动]}
+  - {name: 🤖 ChatGPT, <<: *default}
+  - {name: 🎬 YouTube, <<: *default}
+  - {name: 🍀 Google, <<: *default}
+  - {name: 🪴 GitHub, <<: *default}
+  - {name: 🐬 OneDrive, <<: *default}
+  - {name: Ⓜ️ Microsoft, <<: *default}
+  - {name: 📱 Telegram, <<: *default}
+  - {name: ⛓️‍💥 Speedtest, <<: *default}
+  - {name: 🐟 漏网之鱼, <<: *default}
+  - {name: 🇰🇷 韩国节点, type: select, include-all: true, filter: "(?i)韩|韩国|韓|KR|kr|Korea|🇰🇷"}
+  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)日|日本|JP|jp|Japan|🇯🇵"}
+  - {name: 🇺🇸 美国节点, type: select, include-all: true, filter: "(?i)美|美国|US|us|United States|America|🇺🇸"}
+  - {name: 🇸🇬 新加坡节点, type: select, include-all: true, filter: "(?i)新|新加坡|SG|sg|Singapore|🇸🇬"}
+  - {name: 🔜 故转, type: fallback, include-all: true, tolerance: 100, interval: 300, filter: "^((?!(直连|拒绝)).)*$"}
+  - {name: 🇰🇷 韩国自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?=.*(韩|KR|kr|(?i)Korea))^((?!(日|美|新)).)*$"}  
+  - {name: 🇯🇵 日本自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?=.*(日|JP|jp|(?i)Japan))^((?!(韩|新|美)).)*$"}
+  - {name: 🇺🇸 美国自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?=.*(美|US|us|(?i)States|America))^((?!(日|韩|新)).)*$"}
+  - {name: 🇸🇬 新加坡自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?=.*(新|SG|sg|(?i)Singapore))^((?!(日|韩|美)).)*$"}  
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "^((?!(直连|拒绝)).)*$"}
+  - {name: 🌐 全部节点, type: select, include-all: true}
+
+# 规则匹配
+rules:
+  - RULE-SET,myblock,❌ 拒绝
+  - GEOSITE,category-ads-all,❌ 拒绝
+  - GEOSITE,private,🎯 直连 # 私有地址直连
+  - RULE-SET,mydirect,🎯 直连 # 自用直连  
+  - GEOSITE,tailscale,🎯 直连 # 必须直连，否则tailscale代理打洞
+  - GEOSITE,category-public-tracker,🎯 直连 # BT tracker
+  - GEOSITE,microsoft@cn,🎯 直连
+  - GEOSITE,apple-cn,🎯 直连
+  - GEOSITE,steam@cn,🎯 直连
+  - GEOSITE,category-games@cn,🎯 直连
+  - GEOSITE,synology,🎯 直连 # 群晖服务，包括QC
+  - GEOSITE,cn,🎯 直连 # 中国域名
+  - RULE-SET,myproxy,🔗 节点选择  # 自用代理
+  - GEOSITE,category-ai-!cn,🤖 ChatGPT
+  - GEOSITE,github,🪴 GitHub
+  - GEOSITE,youtube,🎬 YouTube
+  - GEOSITE,google,🍀 Google
+  - GEOSITE,onedrive,🐬 OneDrive
+  - GEOSITE,telegram,📱 Telegram # Telegram服务
+  - GEOSITE,speedtest,⛓️‍💥 Speedtest
+  - GEOSITE,geolocation-!cn,🔗 节点选择
+  - GEOSITE,gfw,🔗 节点选择 # GFW兜底
+  - GEOSITE,microsoft,Ⓜ️ Microsoft # 微软服务
+  - GEOIP,private,🎯 直连,no-resolve # 私有地址直连
+  - GEOIP,cn,🎯 直连,no-resolve # 中国IP
+  - GEOIP,google,🍀 Google,no-resolve
+  - GEOIP,telegram,📱 Telegram,no-resolve # Telegram服务IP
+  - MATCH,🐟 漏网之鱼
+ 
+# 规则集
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  class: &class {type: http, interval: 86400, behavior: classical, format: text}
+  domainf: &domainf {type: http, interval: 86400, behavior: domain, format: text}
+rule-providers:
+  # 自定义规则  
+  myproxy: {<<: *class, url: "https://gh-proxy.com/https://raw.githubusercontent.com/whiskyrye/Rules/main/nikki/myproxy.list"}
+  mydirect: {<<: *class, url: "https://gh-proxy.com/https://raw.githubusercontent.com/whiskyrye/Rules/main/nikki/mydirect.list"}
+  # 禁止联网
+  myblock: {<<: *class, url: "https://gh-proxy.com/https://raw.githubusercontent.com/whiskyrye/Rules/main/nikki/myblock.list"}
+  # fakeipfilter
+  fakeipfilter: {<<: *domainf, url: "https://gh-proxy.com/https://raw.githubusercontent.com/whiskyrye/Rules/main/nikki/fakeipfilter.list"}
