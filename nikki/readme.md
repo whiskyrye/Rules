@@ -5,3 +5,5 @@
 # mihomo、nikki规则集
 - [rules-dat for mihomo](https://github.com/MetaCubeX/meta-rules-dat)
 - [mihomo：meta branch](https://github.com/MetaCubeX/meta-rules-dat/tree/meta)
+# icon图标仓库
+- [Icons for Dashboard, MetacubeX, Zashboard](https://github.com/Vbaethon/HOMOMIX)
