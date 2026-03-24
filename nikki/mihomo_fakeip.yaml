@@ -171,9 +171,9 @@ geox-url: # 自定义 GEO 文件下载地址
 
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-default: &default {type: select, proxies: [ 🔗 节点选择, 🔜 故转, ♻️ 自动选择, 🐸 手动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动, 🇸🇬 新加坡手动, 🎯 直连, ❌ 拒绝]}
+default: &default {type: select, proxies: [ 🔗 默认代理, 🔜 故转, ♻️ 自动选择, 🐸 手动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动, 🇸🇬 新加坡手动, 🎯 直连, ❌ 拒绝]}
 proxy-groups:
-  - {name: 🔗 节点选择, type: select,proxies: [🔜 故转,♻️ 自动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动,🇸🇬 新加坡手动]}
+  - {name: 🔗 默认代理, type: select,proxies: [🔜 故转,♻️ 自动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动,🇸🇬 新加坡手动]}
   - {name: 🤖 ChatGPT, <<: *default}
   - {name: 🎬 YouTube, <<: *default}
   - {name: 🍀 Google, <<: *default}
@@ -207,7 +207,7 @@ rules:
   - RULE-SET,cngames_domain,🎯 直连
   - RULE-SET,synology_domain,🎯 直连
   - RULE-SET,cn_domain,🎯 直连
-  - RULE-SET,myproxy,🔗 节点选择
+  - RULE-SET,myproxy,🔗 默认代理
   - RULE-SET,ai_domain,🤖 ChatGPT
   - RULE-SET,github_domain,🪴 GitHub
   - RULE-SET,youtube_domain,🎬 YouTube
@@ -215,8 +215,8 @@ rules:
   - RULE-SET,onedrive_domain,🐬 OneDrive
   - RULE-SET,telegram_domain,📱 Telegram
   - RULE-SET,speedtest_domain,⛓️‍💥 Speedtest
-  - RULE-SET,geolocation-!cn,🔗 节点选择
-  - RULE-SET,gfw_domain,🔗 节点选择
+  - RULE-SET,geolocation-!cn,🔗 默认代理
+  - RULE-SET,gfw_domain,🔗 默认代理
   - RULE-SET,microsoft_domain,Ⓜ️ Microsoft
   - RULE-SET,private_ip,🎯 直连,no-resolve
   - RULE-SET,cn_ip,🎯 直连,no-resolve
