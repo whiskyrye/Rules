@@ -173,9 +173,9 @@ geox-url: # 自定义 GEO 文件下载地址
 
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-default: &default {type: select, proxies: [ 🔗 节点选择, 🔜 故转, ♻️ 自动选择, 🐸 手动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动, 🇸🇬 新加坡手动, 🎯 直连, ❌ 拒绝]}
+default: &default {type: select, proxies: [ 🔗 默认代理, 🔜 故转, ♻️ 自动选择, 🐸 手动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动, 🇸🇬 新加坡手动, 🎯 直连, ❌ 拒绝]}
 proxy-groups:
-  - {name: 🔗 节点选择, type: select,proxies: [🔜 故转,♻️ 自动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动,🇸🇬 新加坡手动]}
+  - {name: 🔗 默认代理, type: select,proxies: [🔜 故转,♻️ 自动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动,🇸🇬 新加坡手动]}
   - {name: 🤖 ChatGPT, <<: *default}
   - {name: 🎬 YouTube, <<: *default}
   - {name: 🍀 Google, <<: *default}
@@ -209,7 +209,7 @@ rules:
   - GEOSITE,category-games@cn,🎯 直连
   - GEOSITE,synology,🎯 直连 # 群晖服务，包括QC
   - GEOSITE,cn,🎯 直连 # 中国域名
-  - RULE-SET,myproxy,🔗 节点选择  # 自用代理
+  - RULE-SET,myproxy,🔗 默认代理  # 自用代理
   - GEOSITE,category-ai-!cn,🤖 ChatGPT
   - GEOSITE,github,🪴 GitHub
   - GEOSITE,youtube,🎬 YouTube
@@ -217,8 +217,8 @@ rules:
   - GEOSITE,onedrive,🐬 OneDrive
   - GEOSITE,telegram,📱 Telegram # Telegram服务
   - GEOSITE,speedtest,⛓️‍💥 Speedtest
-  - GEOSITE,geolocation-!cn,🔗 节点选择
-  - GEOSITE,gfw,🔗 节点选择 # GFW兜底
+  - GEOSITE,geolocation-!cn,🔗 默认代理
+  - GEOSITE,gfw,🔗 默认代理 # GFW兜底
   - GEOSITE,microsoft,Ⓜ️ Microsoft # 微软服务
   - GEOIP,private,🎯 直连,no-resolve # 私有地址直连
   - GEOIP,cn,🎯 直连,no-resolve # 中国IP
