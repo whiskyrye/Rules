@@ -173,9 +173,9 @@ geox-url: # 自定义 GEO 文件下载地址
 
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-default: &default {type: select, proxies: [ 🔗 节点选择, 🔜 故转, ♻️ 自动选择, 🇰🇷 韩国自动, 🇯🇵 日本自动, 🇺🇸 美国自动, 🇸🇬 新加坡自动, 🎯 直连, ❌ 拒绝]}
+default: &default {type: select, proxies: [ 🔗 节点选择, 🔜 故转, ♻️ 自动选择, 🐸 手动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动, 🇸🇬 新加坡手动, 🎯 直连, ❌ 拒绝]}
 proxy-groups:
-  - {name: 🔗 节点选择, type: select,proxies: [🔜 故转,♻️ 自动选择, 🇰🇷 韩国自动, 🇯🇵 日本自动, 🇺🇸 美国自动,🇸🇬 新加坡自动]}
+  - {name: 🔗 节点选择, type: select,proxies: [🔜 故转,♻️ 自动选择, 🇭🇰 香港手动, 🇰🇷 韩国手动, 🇯🇵 日本手动, 🇺🇸 美国手动,🇸🇬 新加坡手动]}
   - {name: 🤖 ChatGPT, <<: *default}
   - {name: 🎬 YouTube, <<: *default}
   - {name: 🍀 Google, <<: *default}
@@ -185,16 +185,14 @@ proxy-groups:
   - {name: 📱 Telegram, <<: *default}
   - {name: ⛓️‍💥 Speedtest, <<: *default}
   - {name: 🐟 漏网之鱼, <<: *default}
-  - {name: 🇰🇷 韩国节点, type: select, include-all: true, filter: "(?i)韩|韩国|韓|KR|kr|Korea|🇰🇷"}
-  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)日|日本|JP|jp|Japan|🇯🇵"}
-  - {name: 🇺🇸 美国节点, type: select, include-all: true, filter: "(?i)美|美国|US|us|United States|America|🇺🇸"}
-  - {name: 🇸🇬 新加坡节点, type: select, include-all: true, filter: "(?i)新|新加坡|SG|sg|Singapore|🇸🇬"}
-  - {name: 🔜 故转, type: fallback, include-all: true, tolerance: 100, interval: 300, filter: "^((?!(直连|拒绝)).)*$"}
-  - {name: 🇰🇷 韩国自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?=.*(韩|KR|kr|(?i)Korea))^((?!(日|美|新)).)*$"}  
-  - {name: 🇯🇵 日本自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?=.*(日|JP|jp|(?i)Japan))^((?!(韩|新|美)).)*$"}
-  - {name: 🇺🇸 美国自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?=.*(美|US|us|(?i)States|America))^((?!(日|韩|新)).)*$"}
-  - {name: 🇸🇬 新加坡自动, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "(?=.*(新|SG|sg|(?i)Singapore))^((?!(日|韩|美)).)*$"}  
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 100, interval: 300, filter: "^((?!(直连|拒绝)).)*$"}
+  - {name: 🇭🇰 香港手动, type: select, include-all: true, filter: "港|香港|HK|hk|(?i)Hong Kong|🇭🇰"}
+  - {name: 🇰🇷 韩国手动, type: select, include-all: true, filter: "韩|韩国|韓|KR|kr|(?i)Korea|🇰🇷"}
+  - {name: 🇯🇵 日本手动, type: select, include-all: true, filter: "日|日本|JP|jp|(?i)Japan|🇯🇵"}
+  - {name: 🇺🇸 美国手动, type: select, include-all: true, filter: "美|美国|US|us|(?i)United States|America|🇺🇸"}
+  - {name: 🇸🇬 新加坡手动, type: select, include-all: true, filter: "新|新加坡|SG|sg|(?i)Singapore|🇸🇬"}
+  - {name: 🔜 故转, type: fallback, include-all: true, tolerance: 50, interval: 300, filter: "^((?!(直连|拒绝)).)*$"}
+  - {name: 🐸 手动选择, type: select, include-all: true, filter: "^((?!(直连|拒绝)).)*$"}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 50, interval: 300, filter: "^((?!(直连|拒绝)).)*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
 
 # 规则匹配
