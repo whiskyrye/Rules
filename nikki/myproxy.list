@@ -8,7 +8,9 @@ DOMAIN,365.loc.cc
 DOMAIN-SUFFIX,linux.do
 DOMAIN-SUFFIX,nodeloc.com
 DOMAIN-SUFFIX,nodeseek.com
-
+DOMAIN-SUFFIX,googleapis.cn
+DOMAIN-SUFFIX,xn–ngstr-lra8j.com
+DOMAIN-SUFFIX,xn–ngstr-cn-8za9o.com
 # 国外DNS
 # DOMAIN-SUFFIX,dns.google
 # DOMAIN-SUFFIX,cloudflare-dns.com
