@@ -8,14 +8,12 @@
     "cache_file": {
         "enabled": true,
         "path": "/etc/momo/run/cache.db",
-        "store_fakeip": false,
-        "rdrc_timeout": "7d"
+        "store_fakeip": false
     },
     "clash_api": {
         "external_controller": "0.0.0.0:9292",
         "external_ui": "/etc/momo/run/ui",
         "external_ui_download_url": "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip",
-        "external_ui_update_interval": "1d",
         "external_ui_download_detour": "🎯 直连",
         "secret": "",
         "default_mode": "rule"
@@ -23,44 +21,21 @@
   },
   "dns": {
     "servers": [
-      {
-        "type": "hosts",
-        "tag": "hosts",
-        "predefined": {
-          "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
-          "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
-          "dns.google": [ "8.8.8.8", "8.8.4.4" ],
-          "cloudflare-dns.com": [ "1.1.1.1", "1.0.0.1" ]
-        }
-      },
-      {
-        "tag": "localdns",
-        "type": "https",
-        "server": "dns.alidns.com",
-        "server_port": 443,
-        "domain_resolver": "hosts"
-      },
-      {
-        "tag": "proxydns",
-        "type": "tls",
-        "server": "8.8.8.8",
-        "detour": "🚀 默认代理"
-      }
+      {"tag": "local", "type": "udp", "server": "223.5.5.5"},
+      {"tag": "localdns", "type": "https", "server": "dns.alidns.com", "domain_resolver": "local"},
+      {"tag": "proxydns", "type": "https", "server": "8.8.8.8", "detour": "🚀 默认代理"}
     ],
     "rules": [
-        {"ip_accept_any": true, "server": "hosts"},
-        {"action":"reject", "rule_set":["ads", "pcdn"]},
-        {"domain_suffix": ["services.googleapis.cn","googleapis.cn","xn--ngstr-lra8j.com"], "server": "proxydns","strategy": "ipv4_only"},
-        {"clash_mode":"direct", "server":"localdns", "strategy": "ipv4_only"},
-        {"clash_mode":"global", "server":"proxydns", "strategy": "ipv4_only"},
-        {"rule_set":["geosite-cn", "geosite-steamcn", "geosite-apple"], "server":"localdns", "strategy": "ipv4_only"},
-        {"type": "logical", "mode": "and","rules": [{"rule_set": "geosite-!cn","invert": true},{"rule_set": "geoip-cn"}],"server": "proxydns","client_subnet": "114.114.114.114/24"},
-        {"rule_set": ["geosite-!cn"], "server": "proxydns", "strategy": "ipv4_only"}
+        {"rule_set":"ads", "action":"reject"},
+        {"domain_suffix": ["services.googleapis.cn","googleapis.cn","xn--ngstr-lra8j.com"], "server": "proxydns"},
+        {"clash_mode":"direct", "server":"local"},
+        {"clash_mode":"global", "server":"proxydns"},
+        {"query_type": "HTTPS", "action": "reject"},
+        {"rule_set":["geosite-cn", "geosite-steamcn", "geosite-apple"], "server":"local"}
     ],
     "final": "proxydns",
-    "default_reject_rcode": "NOERROR",
-    "disable_cache": true,
-    "disable_expire": false,
+    "client_subnet": "223.5.5.0/24",
+    "strategy": "prefer_ipv4",
     "independent_cache": true
   },
   "inbounds": [
@@ -118,14 +93,13 @@
     {"tag": "❌ 拒绝", "type": "selector", "outbounds": [ "REJECT" ] }
   ],
   "route": {
-    "default_domain_resolver": "localdns",
     "rules": [
-      {"action": "sniff","inbound": ["tun-in", "mixed-in"]},
+      {"action": "sniff", "sniffer": ["http", "tls", "quic", "dns"]},
       {"type": "logical", "mode": "or", "rules": [{"port": 53}, {"protocol": "dns"}], "action": "hijack-dns"},
       {"protocol": "icmp", "outbound": "🎯 直连"},
       {"ip_is_private": true, "outbound": "🎯 直连"},
       {"action": "route", "process_name": ["frpc", "miaospeed", "miaospeed-linux-arm64", "tailscale", "tailscaled", "zerotier"], "outbound": "🎯 直连"},
-      {"action": "route", "rule_set": [ "ads", "pcdn" ], "outbound": "❌ 拒绝" },
+      {"action": "route", "rule_set": "ads", "outbound": "❌ 拒绝" },
       {"clash_mode": "direct", "outbound": "🎯 直连"},
       {"clash_mode": "global", "outbound": "GLOBAL"},
       {"action": "route", "rule_set": [ "private", "privateip", "applications" ], "outbound": "🎯 直连" },
@@ -177,6 +151,7 @@
       {"tag": "geoip-netflix", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs", "download_detour": "🎯 直连"},
       {"tag": "geoip-cn", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs", "download_detour": "🎯 直连"}
     ],
+    "default_domain_resolver": "localdns",
     "auto_detect_interface": true,
     "find_process": true,
     "final": "🐠 漏网之鱼"
