@@ -3,7 +3,7 @@
 - 更换配置文件注意清理缓存，删除/etc/momo/run/cache.db
 - [蓝奏网盘下载地址](https://www.ilanzou.com/s/XpIMrLWb)
 
-# sing-box配置文件，版本1.12.x
+# sing-box配置文件，版本1.13.x
 - momo.json 适配momo，Redir-host，使用reF1nd分支内核
 - momo_fakeip.json 适配momo，fakeip，使用reF1nd分支内核
 - config.json为裸核版本，配合singbox订阅后端使用
