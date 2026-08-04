@@ -21,17 +21,16 @@
   },
   "dns": {
     "servers": [
-      {"tag": "local", "type": "udp", "server": "223.5.5.5"},
-      {"tag": "localdns", "type": "https", "server": "dns.alidns.com", "domain_resolver": "local"},
+      {"tag": "localdns", "type": "udp", "server": "223.5.5.5"},
+      {"tag": "localdnss", "type": "https", "server": "dns.alidns.com", "domain_resolver": "localdns"},
       {"tag": "proxydns", "type": "https", "server": "8.8.8.8", "detour": "🚀 默认代理"}
     ],
     "rules": [
-        {"rule_set":"ads", "action":"reject"},
         {"domain_suffix": ["services.googleapis.cn","googleapis.cn","xn--ngstr-lra8j.com"], "server": "proxydns"},
-        {"clash_mode":"direct", "server":"local"},
+        {"clash_mode":"direct", "server":"localdns"},
         {"clash_mode":"global", "server":"proxydns"},
         {"query_type": "HTTPS", "action": "reject"},
-        {"rule_set":["geosite-cn", "geosite-steamcn", "geosite-apple"], "server":"local"}
+        {"rule_set":["geosite-cn", "geosite-steamcn", "geosite-apple"], "server":"localdns"}
     ],
     "final": "proxydns",
     "client_subnet": "223.5.5.0/24",
@@ -87,9 +86,8 @@
     {"tag": "🐸 手动选择", "type": "selector", "use_all_providers": true, "exclude": "直连|Reject|拒绝"},
     {"tag": "♻️ 自动选择", "type": "urltest", "tolerance": 50, "use_all_providers": true, "interval": "10m","exclude":"直连|Reject|拒绝","url": "http://www.gstatic.com/generate_204"},
     {"tag": "GLOBAL", "type": "selector", "outbounds": ["🚀 默认代理", "🧠 AI", "📹 YouTube", "🍀 Google", "👨‍💻 Github", "📲 Telegram", "🎵 TikTok", "🎥 Netflix", "💶 PayPal", "🎮 Steam", "🪟 Microsoft", "🐬 OneDrive", "🍏 Apple", "🐠 漏网之鱼", "🇰🇷 韩国手动", "🇯🇵 日本手动", "🇸🇬 新加坡手动", "🇺🇲 美国手动", "🐸 手动选择", "♻️ 自动选择", "🎯 直连"]},
-    {"tag": "🎯 直连", "type": "direct"},
-    {"tag": "REJECT", "type": "block" },
-    {"tag": "❌ 拒绝", "type": "selector", "outbounds": [ "REJECT" ] }
+    {"tag": "🎯 直连", "type": "direct", "domain_resolver": "localdns"},
+    {"tag": "❌ 拒绝", "type": "block" }
   ],
   "route": {
     "rules": [
@@ -98,10 +96,9 @@
       {"protocol": "icmp", "outbound": "🎯 直连"},
       {"ip_is_private": true, "outbound": "🎯 直连"},
       {"action": "route", "process_name": ["frpc", "miaospeed", "miaospeed-linux-arm64", "tailscale", "tailscaled", "zerotier"], "outbound": "🎯 直连"},
-      {"action": "route", "rule_set": "ads", "outbound": "❌ 拒绝" },
       {"clash_mode": "direct", "outbound": "🎯 直连"},
       {"clash_mode": "global", "outbound": "GLOBAL"},
-      {"action": "route", "rule_set": [ "private", "privateip", "applications" ], "outbound": "🎯 直连" },
+      {"action": "route", "rule_set": "private", "outbound": "🎯 直连" },
       {"rule_set": "geosite-ai", "outbound": "🧠 AI"},
       {"rule_set": "geosite-youtube", "outbound": "📹 YouTube"},
       {"rule_set": "geosite-google", "outbound": "🍀 Google"},
@@ -124,11 +121,7 @@
       {"rule_set": "geoip-cn", "outbound": "🎯 直连"}
     ],
     "rule_set": [
-      {"tag":"pcdn", "type":"remote", "format":"binary", "url":"https://gh-proxy.com/https://raw.githubusercontent.com/Yuu518/sing-box-rules/refs/heads/rule_set/rule_set_site/pcdn-cn.srs", "download_detour":"🎯 直连"},
-      {"tag":"applications", "type":"remote", "format":"binary", "url":"https://gh-proxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/applications.srs", "download_detour":"🎯 直连"},
       {"tag":"private", "type":"remote", "format":"binary", "url":"https://gh-proxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs", "download_detour":"🎯 直连"},
-      {"tag":"privateip", "type":"remote", "format":"binary", "url":"https://gh-proxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/privateip.srs", "download_detour":"🎯 直连"},
-      {"tag":"ads", "type":"remote", "format":"binary", "url":"https://gh-proxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ads.srs", "download_detour":"🎯 直连"},
       {"tag": "geosite-ai", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs", "download_detour": "🎯 直连"},
       {"tag": "geosite-youtube", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs", "download_detour": "🎯 直连"},
       {"tag": "geosite-google", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs", "download_detour": "🎯 直连"},
@@ -150,7 +143,7 @@
       {"tag": "geoip-netflix", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs", "download_detour": "🎯 直连"},
       {"tag": "geoip-cn", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs", "download_detour": "🎯 直连"}
     ],
-    "default_domain_resolver": "localdns",
+    "default_domain_resolver": "localdnss",
     "auto_detect_interface": true,
     "find_process": true,
     "final": "🐠 漏网之鱼"
