@@ -10,7 +10,7 @@ domains=(
     "www.microsoft.com" "xp.apple.com" "vs.aws.amazon.com" "www.xbox.com" 
     "www.oracle.com" "images.nvidia.com" "www.amazon.com" "aws.amazon.com" 
     "www.amd.com" "www.sony.com" "www.tesla.com" "www.intel.com" 
-    "www.nvidia.com" "www.apple.com" "www.sony.com" "yahoo.com"
+    "www.nvidia.com" "www.apple.com" "one-piece.com" "yahoo.com"
 )
 
 # 循环测试延迟（经典顺序排队模式，单个网站硬性死等 1.5 秒）
