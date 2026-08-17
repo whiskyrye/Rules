@@ -17,18 +17,14 @@ proxies:
   - {name: ❌ 拒绝, type: reject}
 
 # 全局配置 
-port: 7890
-socks-port: 7891
-redir-port: 7892
-mixed-port: 7893
-tproxy-port: 7894
+mixed-port: 7890
+bind-address: "*"
 ipv6: false
 allow-lan: true
 mode: rule
 log-level: warning
 unified-delay: true
 tcp-concurrent: true
-bind-address: '*'
 # 匹配进程 always/strict/off
 #  - always, 开启，强制匹配所有进程
 #  - strict, 默认，由 mihomo 判断是否开启
@@ -48,8 +44,7 @@ profile:
 # 控制面板
 external-controller: 0.0.0.0:9090
 secret: ""
-external-ui: "/etc/mihomo/run/ui"
-external-ui-name: zashboard
+external-ui: "ui"
 external-ui-url: "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
 
 # 流量嗅探
@@ -123,10 +118,6 @@ tun:
   auto-redirect: true
   auto-detect-interface: true
   strict-route: true # 避免冗余路由污染系统表
-  mtu: 1500 # 减少 MTU 问题，如网页无法打开、测速慢
-  gso: true # 启用通用分段卸载（提升性能）
-  gso-max-size: 65536
-  udp-timeout: 300 # UDP 会话保持时间
 
 # DNS模块
 dns:
@@ -138,9 +129,6 @@ dns:
   # 模式切换 redir-host / fake-ip
   enhanced-mode: redir-host
   cache-algorithm: arc    # 使用性能更优的ARC缓存算法
-  cache-size: 2048        # 限制缓存大小
-  use-hosts: false        # 使用hosts
-  use-system-hosts: false # 使用系统hosts
   # fake-ip-range: 198.18.0.1/16
   ## 模式切换 whitelist/blacklist 
   ## 黑名单模式表示如果匹配成功则不返回 Fake-IP, 白名单模式时只有匹配成功才返回 Fake-IP
@@ -152,9 +140,11 @@ dns:
   #   - rule-set:tailscale_domain
   #   - rule-set:check_domain
   #   - rule-set:pubtracker_domain
+  default-nameserver:
+    - 223.5.5.5
   nameserver:
-    - tls://223.5.5.5
-    - tls://223.6.6.6
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 
 # GEO文件配置
 geodata-mode: true # GeoIP 使用的文件,可选 true 为.dat/ false 为.mmdb
