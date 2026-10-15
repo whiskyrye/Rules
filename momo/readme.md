@@ -1,6 +1,7 @@
 # momo推荐使用订阅链接的方式
 - 换成支持订阅链接的sing-box内核，替换OpenWrt目录/usr/bin/下sing-box内核文件，reF1nd分支内核下载：https://github.com/reF1nd/sing-box-releases/releases
 - reF1nd分支内核电报群：[https://t.me/sing_box_reF1nd](https://t.me/sing_box_reF1nd)
+- 软路由下载musl版本即可
 - 更换配置文件注意清理缓存，删除/etc/momo/run/cache.db
 - [蓝奏网盘下载地址](https://www.ilanzou.com/s/XpIMrLWb)
 
