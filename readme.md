@@ -35,5 +35,6 @@
 # Thanks
 - [OpenWrt-nikki](https://github.com/nikkinikki-org/OpenWrt-nikki)
 - [OpenWrt-momo](https://github.com/nikkinikki-org/OpenWrt-momo)
+- [luci-app-honk](https://github.com/QiuSimons/luci-app-honk)
 - [sing-box内核仓库](https://github.com/SagerNet/sing-box)
 - [sing-box官方配指导](https://sing-box.sagernet.org/manual/proxy/client/#virtual-interface)
