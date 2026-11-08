@@ -5,7 +5,7 @@
 
 # 配置文件
 - mihomo.yaml：Redir-host模式,tun-stack：mips
-- nikki.yaml：Redir-host模式m,tun-stack：mips
+- nikki.yaml：Redir-host模式,tun-stack：mips
 - momo.yaml：Redir-host模式,使用reF1nd分支内核,sing-box 1.15.x
 
 # momo推荐使用订阅链接的方式
