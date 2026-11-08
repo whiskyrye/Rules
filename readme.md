@@ -4,9 +4,9 @@
 如果有问题，请自行关闭网络 -> DHCP/DNS -> DNS 重定向这一选项，否则会导致DNS污染/分流错误的的情况发生。
 
 # 配置文件
-- mihomo.yaml：Redir-host模式
-- nikki.yaml：Redir-host模式
-- momo.yaml：Redir-host模式，使用reF1nd分支内核，sing-box 1.15.x
+- mihomo.yaml：Redir-host模式,tun-stack：mips
+- nikki.yaml：Redir-host模式m,tun-stack：mips
+- momo.yaml：Redir-host模式,使用reF1nd分支内核,sing-box 1.15.x
 
 # momo推荐使用订阅链接的方式
 - 换成支持订阅链接的sing-box内核，替换OpenWrt目录/usr/bin/下sing-box内核文件，reF1nd分支内核下载：https://github.com/reF1nd/sing-box-releases/releases
