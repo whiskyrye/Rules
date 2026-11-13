@@ -1,4 +1,4 @@
-# 自编译的ImmortalWrt下载（包含momo、nikki插件）：https://github.com/whiskyrye/ImmortalWrt-Actions/releases
+# 自编译的ImmortalWrt下载（包含momo、nikki、honk插件）：https://github.com/whiskyrye/ImmortalWrt-Actions/releases
 
 ## ImmortalWrt需要特别注意的事情
 如果有问题，请自行关闭网络 -> DHCP/DNS -> DNS 重定向这一选项，否则会导致DNS污染/分流错误的的情况发生。
@@ -7,6 +7,7 @@
 - mihomo.yaml：Redir-host模式,tun-stack：mips
 - nikki.yaml：Redir-host模式,tun-stack：mips
 - momo.yaml：Redir-host模式,使用reF1nd分支内核,sing-box 1.15.x
+- honk.dae：honk配置文件，把对应模块配置拷贝至对应模块文件中
 
 # momo推荐使用订阅链接的方式
 - 换成支持订阅链接的sing-box内核，替换OpenWrt目录/usr/bin/下sing-box内核文件，reF1nd分支内核下载：https://github.com/reF1nd/sing-box-releases/releases
